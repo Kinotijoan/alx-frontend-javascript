@@ -2,8 +2,14 @@ export default function cleanSet(set, startString) {
   if (startString === '') {
     return '';
   }
-  return Array.from(set)
-    .filter((item) => item && item.startsWith(startString))
-    .map((item) => item.slice(startString.length))
-    .join('-');
+  const newArray = Array.from(set).filter(x => x.startsWith(startString));
+
+  let slicedArray = [];
+
+  for (let i=0; i < newArray.length; i++) {
+    slicedArray.push(newArray[i].slice(startString.length));
+  };
+  
+  const joinedArray = slicedArray.join('-');
+  return joinedArray;
 }
